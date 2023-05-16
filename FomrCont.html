@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/MisEstilos.css">
+    <link rel="stylesheet" href="./css/iconbar.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="" name="formContacto" onsubmit="return validar()">
+        <h2>Contacto</h2>
+        <div style="position: relative;">
+            <label for="">Correo Electrónico</label>
+            <input type="text" name="mail" id="mailInput" placeholder="      usuario@gmail.com">
+            <span class="icon-envelop glyphicon" id="mailIcon"></span>
+        </div>
+
+        <label for="">Fecha de Nacimiento</label>
+        <input type="date" name="" id="dateInput">
+
+        <div style="position: relative;">
+            <label for="">Teléfono</label>
+            <input type="number" name="phone" id="phoneInput" placeholder="      Telefono">
+            <span class="icon-phone glyphicon" id="phoneIcon"></span>
+        </div>
+        <input type="submit" value="Enviar" id="botonEnviar">
+        <!-- aca -->
+
+    </form>
+
+    <script>
+        var mailInput = document.getElementById('mailInput');
+        var phoneInput = document.getElementById('phoneInput');
+        var mailIcon = document.getElementById('mailIcon');
+        var phoneIcon = document.getElementById('phoneIcon');
+
+
+        mailInput.addEventListener('click', function () {
+            mailIcon.classList.add('hidden');
+        });
+
+        phoneInput.addEventListener('click', function () {
+            phoneIcon.classList.add('hidden');
+        });
+
+
+        function validar() {
+            var mailInput = document.getElementById('mailInput');
+            var phoneInput = document.getElementById('phoneInput');
+
+            var mailExpresion = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
+            var phoneLength = 10;
+
+            var mailValue = mailInput.value.trim();
+            var phoneValue = phoneInput.value.trim();
+
+            if (!mailExpresion.test(mailValue)) {
+                alert('El correo electrónico no es válido');
+                return false;
+            }
+
+            if (phoneValue.length !== phoneLength || isNaN(phoneValue)) {
+                alert('El teléfono debe ser un número de 10 dígitos');
+                return false;
+            }
+
+            // Mostrar mensaje de espera
+            document.getElementById('botonEnviar').disabled = true;
+
+            // Mostrar mensaje de espera
+            document.getElementById('botonEnviar').value = 'Enviando...';
+
+            // Esperar 3 segundos antes de enviar el formulario
+            setTimeout(function () {
+                this.form.submit();
+            }, 7000);
+        }
+
+
+    </script>
+
+</body>
+
+</html>

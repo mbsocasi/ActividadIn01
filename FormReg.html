@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+        }
+
+        .div1 {
+            grid-area: 1 / 1 / 2 / 3;
+        }
+
+        .div2 {
+            grid-area: 1 / 3 / 2 / 5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="div1">
+            <form action="">
+                <fieldset>
+                    <legend>DIRECCION DE ENVIO</legend>
+
+                    <label for="">Calle Principal </label><br>
+                    <input type="text" name="" id=""><br><br>
+
+                    <label for="">Transversal </label><br>
+                    <input type="text" name="" id=""><br> <br>
+
+                    <label>
+                        <input type="checkbox" name="priopietario[]" value="priopietario"> Entrega al priopietario
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" name="tercero[]" value="tercero"> Entraga a un tercero
+                    </label><br><br>
+
+
+                    <label for="movies">Cantones:</label>
+                    <select id="movies" name="movies">
+                        <option value="ironman">Quito</option>
+                        <option value="avengers">Mejia</option>
+                    </select>
+                </fieldset>
+            </form>
+        </div>
+        <div class="div2" style="display: none;">
+            <form action="">
+                <fieldset>
+                    <legend>INFORMACION CONFIDENCIAL
+                    </legend>
+                    <label for="">Codigo Postal:</label>
+                    <input type="text" name="" id=""><br><br>
+
+                    <label for="">Referencua de la Direccion:</label><br>
+                    <textarea name="" id="" cols="35" rows="5"></textarea><br><br>
+                    <button> Guardar</button>
+                    <button> <a href="./index.html" style="text-decoration: none;"">Regresar</a> </button>
+        </fieldset>
+
+    </form>
+        </div>
+    </div>
+
+    
+
+
+
+</body>
+<script>
+    var checkbox = document.querySelector('input[name="tercero[]"]');
+
+    // Obtener referencia al div
+    var div2 = document.querySelector('.div2');
+
+    // Agregar el evento cambio al checkbox
+    checkbox.addEventListener('change', function () {
+        // Verificar si el checkbox está seleccionado
+        if (checkbox.checked) {
+            // Mostrar el div
+            div2.style.display = 'block';
+        } else {
+            // Ocultar el div
+            div2.style.display = 'none';
+        }
+    });
+</script>
+</html>
